@@ -1,0 +1,48 @@
+# Parameters for urc_rock_detection. Use decimal points for float parameters (e.g. 5.0, not 5).
+rock_detection_node:
+  ros__parameters:
+    image_topic: "image_raw"
+    camera_info_topic: "camera_info"
+    output_frame: "base_link"
+    publish_debug_image: true
+    max_process_hz: 15.0
+    max_image_age_s: 1.0
+
+    # camera mounting relative to base_link (measure on the real rover / Gazebo model)
+    camera_height_m: 0.5
+    camera_pitch_deg: 20.0
+    camera_x_m: 0.15
+    camera_y_m: 0.0
+    camera_yaw_deg: 0.0
+    hfov_deg: 90.0          # used only until camera_info arrives
+    max_range_m: 8.0
+    min_range_m: 0.2
+
+    # costmap footprint
+    inflation_m: 0.15
+    point_resolution_m: 0.05
+    min_hazard_radius_m: 0.10
+    max_hazard_radius_m: 1.5
+
+    # temporal confirmation (1 = publish every detection immediately)
+    min_hits: 2
+    max_age: 3
+
+    # detector
+    process_width: 640
+    horizon_frac: 0.30
+    ignore_bottom_frac: 0.04
+    clahe_clip: 1.5
+    bg_sigma_frac: 0.04
+    dark_thresh: 14.0
+    bright_thresh: 18.0
+    adaptive_k: 0.0
+    close_ksize: 15
+    min_area_frac: 0.0006
+    max_area_frac: 0.30
+    min_solidity: 0.50
+    min_edge_frac: 0.12
+    edge_grad_thresh: 4.0
+    crater_min_area_frac: 0.02
+    min_confidence: 0.35
+    max_detections: 40
